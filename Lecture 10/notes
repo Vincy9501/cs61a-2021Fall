@@ -1,0 +1,123 @@
+Native Data Types：
+  Every value in Python has a class that determines what type of value it is. 
+  The values we have used so far are instances of a small number of native data types that are built into the Python language. 
+  Native data types have the following properties:
+    1. There are expressions that evaluate to values of native types, called literals.
+    2. There are built-in functions and operators to manipulate values of native types.
+ 
+Python includes 3 native numeric type:
+  1. integer (int)
+  2. real numbers (float)
+  3. complex numbers (complex)
+  
+ Non-numeric types: bool
+  
+ Sequences: an ordered collection of values
+  Length: Finite
+  Element selection: corresponding to any non-negative integer index less than its length, starting at 0 for the first element
+    
+   
+ List: A list value is a sequence that can have arbitrary length.
+  1. The built-in len function returns the length of a sequence.
+  2. An element is selated by its index.
+  3. Concatenation and repetition:
+    >>> digits = [1, 8, 2, 8]
+    >>> [2, 7] + digits * 2
+    [2, 7, 1, 8, 2, 8, 1, 8, 2, 8]
+   
+ 
+ For statement:
+  for <name> in <expression>:
+    <suite>
+    
+  Sequence unpacking: 
+  A common pattern in programs is to have a sequence of elements that are themselves sequences, but all of a fixed length.
+  
+  Range:
+    Commonly appear as the expression in a for header.
+    A common convention is to use a single underscore character for the name in the for header.
+    >>> for _ in range(2): # use an underscore or a blank
+            print('Go Bears!')
+    Go Bears!
+    Go Bears!
+    
+ Sequence Processing:
+  1. List Comprehensions is a computation performing sequence processing operations which are expressed by evaluating a 
+  fixed expression and collecting the results for each element in a sequence.
+  
+  >>> odds = [1, 3, 5]
+  >>> [x+1 for x in odds] # The for keyword contained within square brackets is part of a list comprehension
+  [2, 4, 6]
+  
+  2. It is also used to select a subset of values that satisfy some condition. 
+  The general form is:
+    [<map expression> for <name> in <sequence expression> if <filter expression>]
+
+  3. Aggregation
+  
+  Higher-Order Function:
+    1. Evaluate an expression for each element in a sequence.
+    2. Select only elements for which some expression is true.
+    3. Apply a two-argument function to the reduced value so far and each element in turn.
+    
+  # Example:
+  def reduce(reduce_fn, s, initial):
+        reduced = initial
+        for x in s:
+            reduced = reduce_fn(reduced, x)
+        return reduced
+   
+   def divisors_of(n):
+        divides_n = lambda x: n % x == 0
+        return [1] + keep_if(divides_n, range(2, n))
+        
+   def sum_of_divisors(n):
+        return reduce(add, divisors_of(n), 0)
+        
+   def perfect(n):
+        return sum_of_divisors(n) == n
+   
+   def keep_if(filter_fn, s):
+        return [x for x in s if filter_fn(x)]
+        
+   keep_if(perfect, range(1, 1000)) # Return numbers in (1, 1000) satisfying perfect function
+       
+    # reduce(add, divisors_of(n), 0) == n
+    # Return numbers if divisors_of(n) == n
+    # def divisors(n):
+      return [1] + [n for n in range(1, 1000) if sum(divisors(n) == n]
+      
+    pattern:
+      final_func(func, range) # limited field
+      def func(n) # condition to be satisfied
+      def cond_func(n) # appear in func, return a core_function which need to execute repeatedly
+      def core_func(n) # return a function providing operating function, range and initial number
+     
+ Conventional Names:
+
+    def apply_to_all(map_fn, s):
+        return [map_fn(x) for x in s]
+    def keep_if(filter_fn, s):
+        return [x for x in s if filter_fn(x)]
+        
+    apply_to_all to map
+    keep_if to filter
+    
+ 
+ Sequence Abstraction:
+    Lists and ranges satisfy the conditions for length and element selection.
+    1. Membership: A value can be tested for membership in a sequence. 
+      >>> digits
+      [1, 8, 2, 8]
+      >>> 2 in digits
+      True
+    2. Slicing: A slice of a sequence is any contiguous span of the original sequence, designated by a pair of integers.
+      >>> digits[0:2]
+      [1, 8]
+      >>> digits[1:]
+      [8, 2, 8]
+ 
+ Strings: satisfy the two conditions of length and element selection
+  
+    
+    
