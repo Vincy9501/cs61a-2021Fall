@@ -1,0 +1,92 @@
+# There are some functions that I haven't learned yet.
+
+utils.py
+
+1.
+def lines_from_file(path):
+    """Return a list of strings, one for each line in a file."""
+    with open(path, 'r') as f:
+        return [line.strip() for line in f.readlines()]
+        
+# with open() as f
+"""
+  Open() is a funtcion to open a file, returning a file object.
+  When we open a file, we can specify the mode.
+  Mode            Description
+  r       Opens a file for reading
+  w       Opens a file for writing. Create a new file if it doesn't exist or truncates the file if it exists.
+  x       Opens a file for exclusive creation.
+  a       Opens a file for appending at the end of the file without truncating it. Create a new file if it doesn't exist.
+  t       Opens in text mode.
+  b       Opens in binary mode.
+  +       Opens a file for updating (r+w)
+  
+ Addition:
+  If we need to close the file, we use close().
+    f = open("t.txt")
+    f.close()
+  Another safer way to close the file is to use a try...finally block.
+    try:
+      f = open("t.txt")
+    finally:
+      f.close()
+   The best way to close a file is by using the with statement.
+    with open("t.txt")as f:
+"""
+
+# strip()
+"""
+  The syntax is:
+    string.strip(characters)
+  A set of characters to remove as leading/trailing characters.
+"""
+
+# f.readlines()
+"""
+  The readline() method returns one line from the file.
+  The syntax is:
+    file.readline(size)
+  The size is optional. It determines how many bytes from the line to return.
+  If we call readline() twice, it will return both the first and the second line.
+  
+  The readlines() reads until EOF using readline() and returns a list containing the lines.
+  If the optional sizehint argument is present, \
+  whole lines totalling approximately sizehint bytes (possibly after rounding up to an internal buffer size) are read.
+  The syntax is:
+    fileObject.readlines(sizehint):
+"""
+
+2.
+def remove_punctuation(s):
+    """Return a string with the same contents as s, but with punctuation removed.
+
+    >>> remove_punctuation("It's a lovely day, don't you think?")
+    'Its a lovely day dont you think'
+	>>> remove_punctuation("Its a lovely day dont you think")
+    'Its a lovely day dont you think'
+    """
+    punctuation_remover = str.maketrans('', '', string.punctuation)
+    return s.strip().translate(punctuation_remover)
+
+# maketrans() and translate()
+  This function returns a mapping table that can be used with the
+  translate() method to replace specified characters.
+  
+  The syntax is:
+    string.maketrans(x, y, z)
+    x --- Required.
+    y --- Optional. A string with the same length as parameter x.
+
+3.
+  def split(s):
+    """Return a list of words contained in s, which are sequences of characters
+    separated by whitespace (spaces, tabs, etc.).
+
+    >>> split("It's a lovely day, don't you think?")
+    ["It's", 'a', 'lovely', 'day,', "don't", 'you', 'think?']
+    """
+    return s.split()
+
+4.
+  
+   
