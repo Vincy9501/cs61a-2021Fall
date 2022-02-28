@@ -1,0 +1,86 @@
+1. Box-and-Pointer Notation
+  This is a way to represent lists within our environment diagrams.
+  
+  The closure property of data types is a method for combining data values satisfies the
+  closure property if the result of combination can itself be combined using the same method.
+  
+  It is powerful for permitting us to create hierarachical structures.
+
+2. Slice
+  Square brackets with a colon inside are called a slicing operator.
+  
+3. Processing Container Values
+  Sequence Aggregation:
+    Several built-in functions take iterable arguments and aggregate them into a value.
+    1. sum(iterable[, start])
+      Return the sum of an iterable of numbers plus the value of parameter 'start'.
+    
+    2. max(iterable[, key=func])
+      With a single iterable argument, return its largest item.
+      With two or more arguments, return the largest argument.
+  
+      >>> max(range(10), key=lambda x: 7-(x-4)*(x-2))
+      3
+ 
+      # It applies a function to every element that you're considering, and actually computes the 
+      maximum based on the return values of calling those functions.
+    
+    3. all(iterable)
+      Return True if bool(x) is true for all values  x in the iterable.
+      If the iterable is empty, return True.
+ 
+4. Recursive Sums
+  Sum(recursively)
+  
+  def mysum(L):
+    if(L==[]):
+      return 0
+    else:
+      return L[0] + mysum(L[1:])
+  
+  mysum([2, 4, 1, 5])
+  
+  # --- DRILL ---
+  # Write an iterative function that takes as input
+  # integer "n" and returns the sum of the first "n"
+  # intergers: sum(5) returns 1+2+3+4+5
+  
+  # My solution
+  def sum_iter(n):
+    sum = 0
+    while n > 0:
+      sum += n
+      n -= 1
+     return sum
+  
+  # The teacher's solution
+  def sum_iter(n):
+    sum = 0
+    for i in range(0, n+1):
+      sum += i
+    return sum
+    
+  # --- DRILL ---
+  # Write a recursive function that takes as input
+  # integer "n" and returns the sum of the first "n"
+  # intergers: sum(5) returns 1+2+3+4+5
+  
+  # My solution
+  def sum_rec(n):
+    if n == 0:
+      return 0
+    else:
+      return n + sum_rec(n-1)
+
+5. String Reversal
+  Reversing a List(recursively)
+  reverse("word") = "draw"
+  reverse("word") = reverse("ard") + "w"
+  ...
+  def reverse(s):
+    if len(s) == 1:
+      return s
+    else:
+      return reverse(s[1:]) + s[0]
+  
+  
