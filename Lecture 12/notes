@@ -1,0 +1,65 @@
+1. Data Abstraction
+  An Abstract data type lets us manipulate compound objects as units.
+  Isolate 2 parts of any program that uses data:
+    1. How data are represented (as parts)
+    2. How data are manipulated (as units)
+  Data abstraction: A methodology by which functions enforce an abstraction barrier
+  between representation and use.
+  
+  Rational Numbers:
+    numerator / denominator
+  def mul_rational(x, y):
+    return rational(numer(x) *numer(y), denom(x) * denom(y))
+  # rational: constructor
+  # numer or denom: selector
+  
+2. Pairs
+  >>> pair = [1, 2]
+  >>> pair
+  [1, 2]
+  
+  >>> x, y = pair     # "Unpacking" a list
+  >>> x
+  1
+  >>> y
+  2
+  
+  >>> pair[0]
+  1
+  >>> pair[1]
+  2
+  
+  >>> from operator import getitem
+  >>> getitem(pair, 0)
+  1
+  
+3. Abstraction Barriers
+  Abstraction barriers shape the way in which we think about data. 
+  A valid representation of a rational number is not restricted to any particular implementation (such as a two-element list); 
+  it is a value returned by rational that can be passed to numer, and denom. 
+  
+4. Data Representations
+
+5. Dictionaries
+  It is a bulit-in data type that hold pairs of a key, which is what you use to look
+  something up, which is what you use to look up a value and of the corresponding value.
+  
+  Dictionary keys do have two restrictions:
+    A key of a dictionary cannot be a list or a dictionary (or any mutable type)
+    Two keys cannot be equal; There can be at most one value for a given key
+    
+  Dictionary Comprehensions:
+    {<key exp>: <value exp> for <name> in <iter exp> if <filter exp>}
+    
+    An expression that evaluates to a dictionary using this evaluation procedure:
+    1. Add a new frame with the current frame as its parent
+    2. Create an empty result dictionary that is the value of the expression
+    3. For each element in the iterable value of <iter exp>:
+      A. Bind <name> to that element in the new frame from step 1
+      B. If <filter exp> evaluates to a true value, then add to the result dictionary an entry
+      that pairs the value of <key exp> to the value of <value exp>
+      {x*x: x for x in [1, 2, 3, 4, 5] if x>2}
+      {9: 3, 16: 4, 25: 5}
+    
+      def index(keys, values, match):
+        return {k: [v for v in values if match(k, v)] for k in keys}
