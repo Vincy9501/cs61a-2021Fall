@@ -1,0 +1,87 @@
+1. Object
+  Objects combine data values with behavior. Objects represent information, 
+  but also behave like the things that they represent. 
+  >>> from datetime import date 
+  
+  # The name date is bound to a class which represents a kind of value.
+  # Individual dates are called instances of that class which can be constructed by calling the class on arguments.
+  
+  Objects have attributes, which are named values that are part of the object.
+  <expression>. <name>
+  
+  Objects also have methods, which are function-valued attributes.
+  
+  Summary:
+    1. Objects represent information
+    2. They consist of data and behavior, bundled together to create adstractions
+    3. Objects can represent things, but also properties, interactions, & processes
+    4. A type of object is called a class; classes are first-class values in Python
+    5. Object-oriented programming:
+      a. A metaphor for organizing large programs
+      b. Special syntax that can improve the composition of programs
+    6. In Python, every value is an object 
+      a. All objects have attributes
+      b. A lot of data manipulation happens through object methods
+      c. Functions do one thing: objects do many related things
+
+2. Example: String
+  
+3. Mutation Operations
+  # What's the difference the list methods between pop and remove?
+  
+  # The pop() method like del deletes value at a particular index.
+  # But pop()method returns deleted value from the list.
+  # Syntax: list_name.pop(value)
+  
+  # The remove() method removes the first matching value from the list.
+  # Syntax: list_name.remove(value)
+  
+  # What's the difference between the list methods append and extend?
+  # append adds its argument as a single element to the end of a list.
+  # extend iterates over its argument adding each element to the list, extending the list.
+  
+  def mystery(s):
+    s.pop()
+    s.pop()
+  
+  >>> four = [1, 2, 3, 4]
+  >>> len(four)
+  4
+  >>> another_mystery()
+  >>> len(four)
+  2
+  
+4. Tuples
+  They are immutable sequences.
+  A tuple in Python is similar to a list. 
+  The difference between the two is that we cannot change the elements 
+  of a tuple once it is assigned whereas we can change the elements of a list.
+
+5. Mutation
+  Identity
+  <exp0> is <exp1>
+  evaluates to True if both <exp0> and <exp1> evaluate to the same object
+
+  Equality
+  <exp0> == <exp1>
+  evaluates to True if both <exp0> and <exp1> evaluate to equal values
+  Identical objects are always equal values.
+  
+6. Mutable Functions
+  A Function with Behavior.
+  
+  def make_withdraw_list(balance) :
+    b = [balance]
+    def withdraw(amount):
+      if amount > b[0]:
+        return 'Insufficient funds'
+      b[0] = b[0] - amount
+      return b[0]
+    return withdraw
+
+  withdraw = make_withdraw_list (100)
+  withdraw(25)
+
+  
+
+
