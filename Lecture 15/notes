@@ -1,0 +1,51 @@
+1. Natural Langauage Syntax
+2. Data Abstraction
+  def phrase(tag, branches):
+    return tree(tag, branches)
+  
+  def word(tag, text):
+    return tree([tag, text])
+  
+  def tag(t):
+    if is_leaf(t):
+      return label(t)[0]
+    else:
+      return label(t)
+   
+   def text(w):
+    assert is_leaf(w)
+    return label(w)[1]
+    
+3. Parsing
+  Files, Strings, and Lists:
+    1. One string containing the whole contents of the file:
+        open('/some/file.txt').read()
+    2. A list of strings, each containing one line: open('/some/file.txt').readlines()
+    
+    Useful string methods for processing the contents of a file:
+      1. strip() returns a string without whitespace (spaces, tabs, etc.) on the ends
+      2. strip() returns a list of strings that were separated by whitespace
+      >>> 'hi there'.split()
+      ['hi', 'there']
+      3. replace(a, b) returns a string with all instances of string a replaced by string b
+      >>> '2+2'.replace('+', ' + ')
+      2 + 2
+      
+  # count() returns the count of how many times a given object occurs in a List.
+  
+  # Converting a List Describing a Constituent to a Tree
+    def read_parse_tree(token, i):
+      Read the tag, which is tokens[i], then advance i.
+      While the current item is a '(', call read_parse_tree to construct a branch.
+      Once the current item is a ')'. return a phrase from the tag and branches.
+      Base case: there is no '(' or ')' because there is just text after the tag.
+    
+4. Genrating Language
+
+5. Changing the Data Representation
+  
+  
+    
+  
+      
+      
