@@ -1,0 +1,124 @@
+1. Generators
+ A Generator is a special kind of iterator. Just like a map object is a special kind of iterator.
+ Generators and Generator Functions
+  >>> def plus_minus(x):
+          yield x
+          yield -x
+  >>> t = plus_minus(3)
+  >>> next(t)
+  3
+  >>> next(t)
+  -3
+  >>> t
+  <generator object ...>
+  
+  So generator function can yield values instead of returning them
+  and it can yield multiple times.
+  
+2. Generators and Iterations
+  Generators can yield from iterators
+    A yield from statement yields all values from an iterator or iterable.
+    >>> list(a_then_b([3, 4], [5, 6]))
+    [3, 4, 5, 6]
+    
+    def a_then_b(a, b):
+      for x in a:
+        yield x
+      for x in b:
+        yield x
+        
+    def a_then_b(a, b):
+      yield from a 
+      yield from b
+    
+    >>> list(countdown(5))
+    [5, 4, 3, 2, 1]
+    
+    def countdown(k):
+      if k > 0:
+        yield k
+        yield from countdown(k-1)
+      else:
+        yield 'Blast off'
+        
+    def prefixes(s):
+      if s:
+        yield from prefixes(s[:-1])
+        yield s
+        
+    def substrings(s):
+      if s:
+         yield from prefixes(s)
+         yield from substrings(s[1:])
+ 
+3. Generator Functions with Return Statements
+  Upon executing a return statement,a generator function exits and cannot yield more values.
+  def f(x):
+    yield x
+    yield x + 1
+    return
+    yield x + 3
+    >>> list(f(2))
+    [2, 3]
+    
+  Providing a value to be returned is allowed，but this value is not yielded.
+  def g(x):
+    yield x
+    yield x + 1
+    return x + 2
+    yield x + 3
+    
+  >>> list(g(2))
+  [2, 3]
+  
+  def h(x):
+    y = yield from g(x)
+    yield y
+    
+    >>> list(h(2))
+    [2, 3, 4]
+    
+ 4. Example: Partitions
+  def count_partitions(n, m):
+    if n == 0:
+      return 1
+    elif n < 0:
+      return 0
+    elif m == 0:
+      return 0
+    else:
+      with_m = count_partitions(n-m, m)
+      without_m = count_partitions(n, m-1)
+      return with_m + without_m
+
+  def list_partitions(n, m):
+    if n < 0 or m == 0:
+      return []
+    else:
+      exact_match = []
+      if n == m:
+        exact_match = [[m]]
+      with_m = [ p + [m] for p in list_partitions(n-m, m)]
+      without_m = list_partitions(n, m-1)
+      return exact_match + with_m + without_m
+
+  def partitions(n, m):
+    if n < 0 or m == 0:
+      return []
+    else:
+      exact_match = []
+      if n == m:
+        exact_match = [str(m)]
+      with_m = [ p + ' + ' + str(m) for p in partitions(n-m, m)]
+      without_m = list_partitions(n, m-1)
+      return exact_match + with_m + without_m
+
+  def partitions(n, m):
+    if n > 0 and m > 0:
+      return []
+    else:
+      if n == m:
+        yield str(m)
+      for p in partitions(n-m, m):
+        yield p + ' + ' + str(m)
+      yield from partitions(n-m, m)
