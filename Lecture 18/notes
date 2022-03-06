@@ -1,0 +1,59 @@
+1. Object-Oriented Programming
+  A method for organizing modular programs.
+
+2. Class Statements
+  Class Statements let you create any type of data you want.
+  clss <name>:
+    <suite>
+  
+  A class statement creates a new class and binds that class to <name> in the first frame ofthe current environment.
+  Assignment & def statements in <suite> create attributes of the class (not names in frames)
+
+  >>> class Clown:
+      nose = 'big and red'
+      def dance():
+        return 'No thanks'
+  >>> Clown.nose
+  'big and red'
+  >>> Clown.dance()
+  'No thanks'
+  >>> Clown
+  <class>
+  
+  The __init__ method of the class is called with the new object as its first
+  argument (named self), along with any additional arguments provided in the
+  call expression.
+  
+  class Account:
+    def __init__(self, account_holder):
+      self.balance = 0
+      self.holder = account_holder
+
+3. Methods
+  Methods are defined in the suite of a class statement.
+  
+  def deposit(self, amount):
+    self.balance = self.balance + amount
+    
+  def withdraw(self, amount):
+    if amount > self.balance:
+      return 'Insufficient funds'
+    self.balance = self.balance - amount
+    return self.balance
+  
+  Dot notation automatically supplies the first argument to a method.
+  <expression> . <name>
+ 
+ 4. Attributes
+  Accessing Attributes:
+    Using getattr, we can look up an attribute using a string
+    
+  >>> getattr("tom_account, 'balance'")
+  100
+  
+  Methods and Functions
+    Python distinguishes between:
+      Functions，which we have been creating since the beginning of the course，and
+      Bound methods，which couple together a function and the object on which that methodwill be invoked.
+      Object + Function = Bound Method
+      
