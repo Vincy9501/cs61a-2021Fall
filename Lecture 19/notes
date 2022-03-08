@@ -1,0 +1,161 @@
+1. Terminology: Attributes, Functions, and Methods
+  All objects have attributes, which are name-value pairs
+  Classes are objects too,so they have attributes
+  Instance attribute: attribute of an instance
+  class attribute: attribute of the class of an instance
+
+  Python object system:
+    Functions are objects.
+    Bound methods are also objects: a function that has its first parameter
+    "self" already bound to an instance.
+    
+  Dot expressions evaluate to bound methods for class attributes that are functions.
+  <instance>.<method_name>
+
+2. Attribute Assignment
+  Assignment statements with a dot expression on their left-hand side 
+  affect attributes forthe object of that dot expression
+
+  If the object is an instance，then assignment sets an instance attribute
+  If the object is a class,then assignment sets a class attribute
+
+  class Account:
+    interest = 0.02
+    def __init__(self, holder):
+      self.holder = holder
+      self.balance = 0
+    
+    tom_account = Account('Tom')
+    
+    tom_account.interest = 0.08 
+    # Attribute assignment statement adds or modifies the attribute named "interest" of tom_account
+    
+    >>> jim_account = Account('Jim')
+    >>> tom_account = Account('Tom')
+    >>> tom_account.interest
+    0.02
+    >>> jim_account.interest
+    0.02
+    >>> Account.interest = 0.04
+    >>> tom_account.interest
+    0.04
+    >>> jim_account.interest
+    0.04
+    >>> jim_account.interest = 0.08
+    >>> jim_account.interest
+    0.08
+    >>> tom_account.interest
+    0.04
+    >>> Account.interest = 0.05
+    >>> tom_account.interest
+    0.05
+    >>> jim_account.interest
+    0.08
+ 
+3. Inheritance
+  Inheritance is a method for relating classes together.
+  A common use: Two similar classes differ in their degree of specialization.
+  class <name>(<base class>):
+    <suite>
+  Conceptually, the new subclass "shares" attributes with its base class.
+  The subclass may override certain inherited attributes.
+
+>>> ch = CheckingAccount(‘Tom')
+>>> ch.interest       # Lower interest rate for checking accounts
+0.01
+>>> ch.deposit(20)  # Deposits are the same
+20
+>>> ch.withdraw(5)    # withdrawals incur a $1 fee
+14
+Most behavior is shared with the base class Account
+
+class CheckingAccount(Account):
+  withdraw_fee = 1
+  interest = 0.01
+  def withdraw(self, amount):
+    return Account.withdraw(self.amount + self.withdraw_fee)
+
+4. Object-Oriented Design
+  Designing for Inheritance
+  
+5. Attributes Lookup Practice
+  class A:
+    z = -1
+    def f(self. x):
+      return B(x-1)
+      
+  class B(A):
+    n = 4
+    def __init__(self, y):
+      if y:
+        self.z = self.f(y)
+      else:
+        self.z = C(y+1)
+        
+   class c(B):
+    def f(self, x):
+      return x
+      
+   a = A() 
+   '''
+   Since there is no init method within the class definition A,
+   there are no instance attributes that are set.
+   This A instance is just a blank slate,
+   '''
+  
+   b = B(1)
+   '''
+   
+   b.n = 5
+   >>> C(2).n
+   4
+   '''
+   Since C doesn't have init, we look at its base class B.
+   y bound to 2.
+   self is the C instance.
+   z is 2. Why is 2? We look up self f. But there's no f attribute in C instance.
+   So we look in the class C.
+   ...
+   
+   >>> a.z == C.z
+   True
+   They have the same attribute.
+   
+   >>> a.z == b.z
+   -1 1
+   False
+   
+   Which evaluates to an integer?
+   b.z is a B instance.
+   b.z.z is a C instance
+   b.z.z.z is 1.
+   
+6. Multiple Inheritance
+  Multiple Inheritance is when a subclass has multiple base classes.
+  class SavingsAccount (Account) :
+    deposit_fee = 2
+    def deposit(self, amount) :
+      return Account. deposit(self, amount - self.deposit_fee)
+  
+cleverBank marketing executive wants:·Low interest rate of 1%
+·A $1 fee for withdrawals- A $2 fee for deposits
+·A free dollar when you open your account
+
+class AsSeenOnTVAccount(CheckingAccount，SavingsAccount) :
+  def__init__(self, account_holder) :
+    self.holder = account_holder
+    self.balance = 1 #A free dollar!
+
+7. Complicated Inheritance
+
+
+
+
+
+
+
+
+
+
+
+
