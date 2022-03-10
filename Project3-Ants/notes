@@ -1,0 +1,422 @@
+1. Problem 0
+What is the significance of an Insect's health attribute? Does this value change? If so, how?
+0)It represents the strength of an insect against attacks, which
+   doesn't change throughout the game
+1)It represents the amount of health the insect has left, so the
+   insect is eliminated when it reaches 0
+2)It represents health protecting the insect, so the insect can only
+   be damaged when its health reaches 0
+1
+
+Which of the following is a class attribute of the Insect class?
+0) place
+1) bees
+2) health
+3) damage
+3
+
+Is the health attribute of the Ant class an instance attribute or a class attribute? Why?
+0) class, Ants of the same subclass all have the same amount of starting health
+1) instance, each Ant starts out with a different amount of health
+2) class, when one Ant gets damaged, all ants receive the same amount of damage
+3) instance, each Ant instance needs its own health value
+3
+
+Is the damage attribute of an Ant subclass (such as ThrowerAnt) an instance attribute or class attribute? Why?
+0) instance, the damage an Ant depends on where the Ant is
+1) class, all Ants deal the same damage
+2) instance, each Ant does damage to bees at different rates
+3) class, all Ants of the same subclass deal the same damage
+3
+
+Which class do both Ant and Bee inherit from?
+0) Bee
+1) Ant
+2) Insect
+3) Place
+2
+
+What do instances of Ant and instances of Bee have in common?
+0) Ants and Bees both have the attributes health, damage, and place
+   and the methods reduce_health and action
+1) Ants and Bees both take the same action each turn
+2) Ants and Bees have nothing in common
+3) Ants and Bees both have the attribute damage and the methods
+   reduce_health and action
+0
+
+How many insects can be in a single Place at any given time (before Problem 8)?
+0) Only one insect can be in a single Place at a time
+1) There is no limit on the number of insects of any type in a single Place
+2) There can be one Ant and many Bees in a single Place
+3) There can be one Bee and many Ants in a single Place
+2
+
+What does a Bee do during one of its turns?
+0) The bee stings the ant in its place and then moves to the next place
+1) The bee flies to the nearest Ant and attacks it
+2) The bee moves to the next place, then stings the ant in that place
+3) The bee stings the ant in its place or moves to the next place if there is no ant in its place
+3
+
+When is the game lost?
+0) When any bee reaches the end of the tunnel and the Queen Ant is killed
+1) When any bee reaches the end of the tunnel or when the Queen Ant is killed
+2) When the bees enter the colony
+3) When no ants are left on the map
+4) When the colony runs out of food
+1
+
+2. Problem 1
+Q: What is the purpose of the food_cost attribute?
+0) Each turn, each Ant in the colony eats food_cost food from the
+   colony's total available food
+1) Each turn, each Ant in the colony adds food_cost food to the
+   colony's total available food
+2) Placing an ant into the colony will decrease the colony's total
+   available food by that ant's food_cost
+2
+
+Q: What type of attribute is food_cost?
+Choose the number of the correct choice:
+0) instance, the food_cost of an Ant depends on the location it is placed
+1) instance, the food_cost of an Ant is randomized upon initialization
+2) class, all Ants cost the same to place no matter what type of Ant it is
+3) class, all Ants of the same subclass cost the same to place
+3
+
+3. Problem 2
+Q: What does a Place represent in the game?
+Choose the number of the correct choice:
+0) Where the bees start out in the game
+1) The entire space where the game takes place
+2) A single tile that an Ant can be placed on and that connects to
+   other Places
+3) The tunnel that bees travel through
+2
+
+Q: p is a Place whose entrance is q and exit is r (q and r are not None). When is p.entrance first set to a non-None value?
+Choose the number of the correct choice:
+0) Never, it is always set to None
+1) When q is constructed
+2) When p is constructed
+1
+
+Q: p is a Place whose entrance is q and exit is r (q and r are not None). When is p.exit first set to a non-None value?
+Choose the number of the correct choice:
+0) When q is constructed
+1) Never, it is always set to None
+2) When p is constructed
+2
+
+4. Problem 3
+Q: What Bee should a ThrowerAnt throw at?
+Choose the number of the correct choice:
+0) The ThrowerAnt throws at a random Bee in its own Place
+1) The ThrowerAnt finds the nearest place behind its own place
+   that has Bees and throws at a random Bee in that place
+2) The ThrowerAnt finds the nearest place including and in front of its
+   own place that has Bees and throws at a random Bee in that place
+3) The ThrowerAnt finds the nearest place in either direction that has
+   Bees and throws at a random Bee in that place
+2
+
+Q: How do you get the Place object in front of another Place object?
+Choose the number of the correct choice:
+0) Decrement the place by 1
+1) The place's exit instance attribute
+2) Increment the place by 1
+3) The place's entrance instance attribute
+3
+
+Q: What is the entrance of the first Place in a tunnel (i.e. where do the bees enter from)?
+Choose the number of the correct choice:
+0) None
+1) The Hive
+2) An empty Place
+1
+
+Q: How can you determine if a given Place is the Hive?
+Choose the number of the correct choice:
+0) by checking the bees attribute of the place instance
+1) by using the is_hive attribute of the place instance
+2) by checking the ant attribute of the place instance
+1
+
+Q: What should nearest_bee return if there is no Bee in front of the ThrowerAnt in the tunnel?
+Choose the number of the correct choice:
+0) The closest Bee behind the ThrowerAnt
+1) A random Bee in the Hive
+2) None
+2
+
+5. Problem 4
+Q: What class do ShortThrower and LongThrower inherit from?
+Choose the number of the correct choice:
+0) Bee
+1) ShortThrower
+2) ThrowerAnt
+3) LongThrower
+2
+
+Q: What constraint does a regular ThrowerAnt have on its throwing distance?
+Choose the number of the correct choice:
+0) There is no restriction on how far a regular ThrowerAnt can throw
+1) A regular ThrowerAnt can only attack Bees at most 3 places away
+2) A regular ThrowerAnt can only attack Bees at most 5 places away
+3) A regular ThrowerAnt can only attack Bees at least 3 places away
+0
+
+Q: What constraint does a LongThrower have on its throwing distance?
+Choose the number of the correct choice:
+0) A LongThrower can only attack Bees at most 5 places away
+1) There is no restriction on how far a LongThrower can throw
+2) A LongThrower can only attack Bees at least 5 places away
+3) A LongThrower can only attack Bees at least 3 places away
+2
+
+Q: What constraint does a ShortThrower have on its throwing distance?
+Choose the number of the correct choice:
+0) A ShortThrower can only attack Bees at most 5 places away
+1) A ShortThrower can only attack Bees at least 3 places away
+2) There is no restriction on how far a ShortThrower can throw
+3) A ShortThrower can only attack Bees at most 3 places away
+3
+
+Q: With the addition of these new ThrowerAnt subclasses, we must modify
+our definition of nearest_bee. Now what Bee should ThrowerAnts throw
+at?
+Choose the number of the correct choice:
+0) The closest Bee behind it within range
+1) Any Bee within range
+2) The closest Bee in front of it within range
+3) Any Bee in its current Place
+2
+
+6. Problem 5
+Q: How can you obtain the current place of a FireAnt?
+Choose the number of the correct choice:
+0) By calling the FireAnt constructor
+1) By accessing the place instance attribute, which is the name of
+   some Place object
+2) By accessing the place instance attribute, which is a Place object
+3) By calling the Place constructor, passing in the FireAnt instance
+2
+
+Q: How can you obtain all of the Bees currently in a given place?
+Choose the number of the correct choice:
+0) By calling the Bee constructor, passing in the place instance
+1) By accessing the bees instance attribute, which is a dictionary of
+   Bee objects
+2) By calling the add_insect method on the place instance
+3) By accessing the bees instance attribute, which is a list of Bee
+   objects
+3
+
+Q: Can you iterate over a list while mutating it?
+Choose the number of the correct choice:
+0) Yes, you can mutate a list while iterating over it with no problems
+1) Yes, but you should iterate over a copy of the list to avoid skipping
+   elements
+2) No, Python doesn't allow list mutation on a list that is being
+   iterated through
+1
+
+7. Problem 6
+Q: What class does WallAnt inherit from?
+Choose the number of the correct choice:
+0) The WallAnt class does not inherit from any class
+1) ThrowerAnt
+2) Ant
+3) HungryAnt
+2
+
+Q: What is a WallAnt's action?
+Choose the number of the correct choice:
+0) A WallAnt attacks all the Bees in its place each turn
+1) A WallAnt increases its own health by 1 each turn
+2) A WallAnt reduces its own health by 1 each turn
+3) A WallAnt takes no action each turn
+3
+
+Q: Where do Ant subclasses inherit the action method from?
+Choose the number of the correct choice:
+0) Ant subclasses inherit the action method from the Ant class
+1) Ant subclasses inherit the action method from the Insect class
+2) Ant subclasses do not inherit the action method from any class
+1
+
+Q: If a subclass of Ant does not override the action method, what is the
+default action?
+Choose the number of the correct choice:
+0) Move to the next place
+1) Nothing
+2) Reduce the health of all Bees in its place
+3) Throw a leaf at the nearest Bee
+1
+
+Q: What type of attribute is health?
+Choose the number of the correct choice:
+0) class, all Ants have the same health no matter what type of Ant it is
+1) instance, all Ants have different default starting healths
+2) class, all Ants of the same subclass have the same health
+3) instance, all Ants keep track of their own health
+3
+
+6. Problem 7
+Q: Should chew_countdown be an instance or class attribute? Why?
+Choose the number of the correct choice:
+0) class, all HungryAnt instances in the game chew simultaneously
+1) instance, all HungryAnt instances in the game chew simultaneously
+2) instance, each HungryAnt instance chews independently of other
+   HungryAnt instances
+3) class, each HungryAnt instance chews independently of other
+   HungryAnt instances
+2
+
+Q: When is a HungryAnt able to eat a Bee?
+Choose the number of the correct choice:
+0) Whenever a Bee is in its place
+1) When it is chewing, i.e. when its chew_countdown attribute is at least 1
+2) Each turn
+3) When it is not chewing, i.e. when its chew_countdown attribute is 0
+3
+
+Q: When a HungryAnt is able to eat, which Bee does it eat?
+Choose the number of the correct choice:
+0) The closest Bee behind it
+1) The closest Bee in either direction
+2) A random Bee in the same place as itself
+3) The closest Bee in front of it
+2
+
+7. Problem 8
+Q: Which Ant does a BodyguardAnt guard?
+Choose the number of the correct choice:
+0) All the Ant instances in the gamestate
+1) The Ant instance in the place closest to its own place
+2) The Ant instance that is in the same place as itself
+3) A random Ant instance in the gamestate
+2
+
+Q: How does a BodyguardAnt guard its ant?
+Choose the number of the correct choice:
+0) By allowing Bees to pass without attacking
+1) By attacking Bees that try to attack it
+2) By increasing the ant's health
+3) By protecting the ant from Bees and allowing it to perform its original action
+3
+
+Q: Where is the ant contained by a BodyguardAnt stored?
+Choose the number of the correct choice:
+0) In its place's ant instance attribute
+1) Nowhere, a BodyguardAnt has no knowledge of the ant that it's protecting
+2) In the BodyguardAnt's ant_contained instance attribute
+3) In the BodyguardAnt's ant_contained class attribute
+2
+
+Q: When can a second Ant be added to a place that already contains an Ant?
+Choose the number of the correct choice:
+0) When both Ant instances are containers
+1) When exactly one of the Ant instances is a container and the
+   container ant does not already contain another ant
+2) There can never be two Ant instances in the same place
+3) When exactly one of the Ant instances is a container
+1
+
+Q: If two Ants occupy the same Place, what is stored in that place's ant
+instance attribute?
+Choose the number of the correct choice:
+0) The Ant being contained
+1) Whichever Ant was placed there first
+2) The Container Ant
+3) A list containing both Ants
+2
+
+Q: Besides costing more to place, what is the only difference between a
+TankAnt and a BodyguardAnt?
+Choose the number of the correct choice:
+0) A TankAnt increases the damage of the ant it contains
+1) A TankAnt has greater health than a BodyguardAnt
+2) A TankAnt does damage to all Bees in its place each turn
+3) A TankAnt can contain multiple ants
+2
+
+11. Problem 10
+Q: What happens when an insect is added to a Water Place?
+Choose the number of the correct choice:
+0) The insect goes for a swim.
+1) The insect's health is reduced to 0.
+2) If the insect is not waterproof, its health is reduced to 0.
+   Otherwise, nothing happens.
+3) Nothing happens.
+2
+
+Q: What type of attribute should "is_waterproof" be?
+Choose the number of the correct choice:
+0) instance, the is_waterproof attribute depends on the given place of an ant
+1) class, all ants should be waterproof
+2) instance, the is_waterproof attribute depends on the amount of health a given ant has left
+3) class, all ants of a subclass should either be waterproof or not
+3
+
+Q: What method deals damage to an Insect and removes it from its place
+if its health reaches 0?
+Choose the number of the correct choice:
+0) sting, in the Bee class
+1) remove_ant, in the GameState class
+2) reduce_health, in the Insect class
+3) remove_insect, in the Place class
+2
+
+12. Problem 11
+Q: How is a ScubaThrower different from a regular ThrowerAnt?
+Choose the number of the correct choice:
+0) It is not waterproof, so its health will be reduced to 0 when it is
+   placed in a Water Place
+1) It throws water pellets instead of leaves
+2) It is waterproof, so its health won't be reduced to 0 when it is
+   placed in a Water Place
+2
+
+Q: Which inherited attributes and/or methods should ScubaThrower
+override?
+Choose the number of the correct choice:
+0) is_waterproof, action
+1) name, nearest_bee, is_waterproof
+2) food_cost, action, damage
+3) name, is_waterproof, food_cost
+3
+
+13. Problem 12
+Q: What class does QueenAnt inherit from?
+Choose the number of the correct choice:
+0) GameState
+1) Ant
+2) ScubaThrower
+3) Insect
+2
+
+Q: What does the true QueenAnt do each turn?
+Choose the number of the correct choice:
+0) Doubles the damage of all the ants in the colony (that haven't
+   already been doubled)
+1) Doubles the damage of all the ants behind her (that haven't
+   already been doubled)
+2) Doubles the damage of all the ants in front of her (that haven't
+   already been doubled)
+3) Attacks the nearest bee and doubles the damage of all the ants
+   behind her (that haven't already been doubled)
+3
+
+Q: Under what circumstances do Ants lose the game?
+Choose the number of the correct choice:
+0) If a second QueenAnt is placed in the colony
+1) If a Bee attacks the true QueenAnt
+2) If a Bee reaches the end of a tunnel or the true QueenAnt dies
+3) If there are no ants left in the colony
+2
+
+
+
+   
