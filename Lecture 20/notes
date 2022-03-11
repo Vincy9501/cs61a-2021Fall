@@ -1,0 +1,120 @@
+1. String Representations
+  An object value should behave like the kind of data it is meant to represent
+  For instance, by producing a string representation of itself
+
+In Python, all objects produce two string representations:-The str is legible to humans
+1. The repr is legible to the Python interpreter
+2. The str and repr strings are often the same，but not always
+
+The repr String for an Object
+The repr function returns a Python expression (a string) that evaluates to an equal object
+
+eval(repr(object)) == object
+
+The str String for an Object
+Human interpretable strings are useful as well:
+
+The result of calling str on the value of an expression is what Python printsusing the print function:
+half = Fraction(1, 2)
+>>> half
+Fraction(1, 2)
+>>> repr(half)
+'Fraction(1, 2)'
+>>> print(half)
+1/2
+>>> str(half)
+'1/2'
+>>> eval(repr(half))
+Fraction(1, 2)
+>>> eval(str(half))
+0.5
+
+2. F-Strings
+String Interpolation in Python
+String interpolation involves evaluating a string literal that contains expressions.
+Using string concatenation:
+>>> from math import pi
+>>> 'pi starts with ' + str(pi) + '...'
+
+Using string interpolation:
+>>> f'pi starts with {pi}...'
+
+>>> s =[9, 8, 7]
+>>> f'because {s.pop()} {s.pop()} {s}.'
+'because 7 8 [9].'
+
+3. Polymorphic Functions
+Polymorphic function: A function that applies to many (poly) different forms (morph) of data
+str and repr are both polymorphic; they apply to any object
+repr invokes a zero-argument method __repr__ on its argument
+
+>>> half.__repr__()
+'Fraction(1, 2)'
+
+str invokes a zero-argument method _str__ on its argument
+
+>>> half.__str__()
+'1/2'
+
+Implementing repr and str
+The behavior of repr is slightly more complicated than invoking _repr_ on its argument:
+An instance attribute called _repr_ is ignored! only class attributes are found
+
+The behavior of str is also complicated:
+An instance attribute called _str_ is ignored
+If no __str__ attribute is found, uses repr string
+
+class Bear:
+  def __init__(self):
+    self.__repr__ = lambda: 'oski'
+    self.__str__ = lambda: 'this bear'
+  
+  def __repr__(self):
+    return 'Bear()'
+    
+  def __str__(self):
+    return 'a bear'
+    
+oski = Bear()
+print(oski)
+print(str(oski))
+print(repr(oski))     # ignore the instance attribute
+print(oski.__str__())
+print(oski.__repr__())
+
+a bear
+a bear
+Bear()
+this bear
+oski
+
+Interfaces:
+Message passing: 0bjects interact by looking up attributes on each other (passing messages)
+The attribute look-up rules allow different data types to respond to the same message
+
+A shared message (attribute name) that elicits similar behavior from different objectclasses is a powerful method of abstraction
+An interface is a set of shared messages，along with a specification of what they mean
+Example:
+classes that implement _repr__ and _str_ methods that return Python-interpretable and
+human-readable strings implement an interface for producing string representations
+
+4. Special Method Names
+  Certain names are special because they have built-in behavior
+  These names always start and end with two underscores
+  
+ __init__
+Method invoked automatically when an object is constructed
+__repr__
+Method invoked to display an object as a Python expression
+__add__
+Method invoked to add one object to another
+__bool__
+Method invoked to convert an object to True or False
+__float__
+Method invoked to convert an object to a float (real number)
+
+
+  
+
+
+
