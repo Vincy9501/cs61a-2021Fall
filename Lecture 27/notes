@@ -1,0 +1,65 @@
+1. Scheme
+2. Scheme Interpreters
+3. Special Forms
+(if <predicate> <consequent> <alternative>)
+(and <e1> ... <en>), (or <e1> ... <en>)
+(define <symbol> <expression>)
+(define(<symbol> <formal parameters>) <body>)
+
+4. Lambda Expression
+lambda (<formal-parameters>) <body>)
+
+5. More Special
+Cond and Begin
+
+The cond special form that behaves like if-elif-else statements in Python
+
+(cond ((> x 10) (print 'big))
+      ((> x 5)  (print 'medium))
+      (else     (print 'small)))
+
+(print
+  (cond ((> x 10) 'big)
+        ((> x 5)  'medium)
+        (else     'small)))
+
+The begin special form combines multiple expressions into one expression
+(cond ((> x 10)(begin (print 'big)  (print 'guy)))
+      (else    (begin (print 'small) (print 'fry))))
+      
+ (if(> x 10)(begin
+              (print 'big)
+              (print 'guy))
+            (begin
+              (print 'small)
+              (print 'fry)))
+
+Let Expressions
+The let special form binds symbols to values temporarily; just for one expression
+a = 3
+b = 2 + 2
+c = math.sqrt(a*a + b*b)
+
+(define c (let (a 3)
+           (b (+ 2 2)))
+           (sqrt (+ (* a a)(* b b)))))
+
+Example: Sierpinski's Triangle
+
+7. Lists
+cons: Two-argument procedure that creates a linked list
+car: Procedure that returns the first element of a list
+cdr: Procedure that returns the rest of a list
+nil: The empty list
+
+8. Symbolic Programming
+  In order to manipulate symbols we need a new element in our language: the ability to quote a data object. Suppose we want to construct the list (a b). We can't accomplish this with (list a b), because this expression constructs a list of the values of a and b rather than the symbols themselves. In Scheme, we refer to the symbols a and b rather than their values by preceding them with a single quotation mark:
+
+(define a 1)
+(define b 2)
+(list a b)
+(1 2)
+(list 'a 'b)
+(a b)
+(list 'a b)
+(a 2)
