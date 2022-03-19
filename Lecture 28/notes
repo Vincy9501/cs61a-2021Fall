@@ -1,0 +1,23 @@
+1. Programs as Data
+2. Generating Code
+Quasiquotation
+
+Quota: '(a b)
+Quasiquotation: `(a b)
+
+(define b 4)
+Quote:  '(a ,(+ b 1))    (a (unquote (+ b 1))
+Quasiquote: `(a ,(+ b 1)) (a 5)
+
+(define (make-add-procedure n) `(lambda (d) (+ d ,n)))
+(make-add-procedure 2)  (lambda (d) (+ d 2))
+
+Example: While Statements
+(begin
+  (define (f x total)
+    (if (< x 10)
+      (f (+ x 2) (+ total (* x x)))
+      total))
+    (f 2 0)))
+
+3. Exceptions
